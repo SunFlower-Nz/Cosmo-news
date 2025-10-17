@@ -44,4 +44,145 @@ Cosmo aims to **democratize access to knowledge**, bringing global events closer
 ---
 
 ## ⚙️ Architecture
+Mobile App (React Native + Expo)
+↓
+API Gateway (Fastify / Node.js)
+↓
+Ingestion Workers (RSS / APIs)
+↓
+Database (PostgreSQL)
+↓
+Cache Layer (Redis)
 
+
+---
+
+## 🧩 Tech Stack
+
+| Layer | Technologies |
+|-------|---------------|
+| **Frontend (App)** | React Native · Expo · TypeScript · React Query · NativeWind |
+| **Backend (API)** | Node.js · Fastify · Prisma ORM · Zod · Swagger |
+| **Workers** | BullMQ · RSS Parser · Node-Cron |
+| **Database / Cache** | PostgreSQL · Redis |
+| **Dev Tools** | Docker · PNPM · TurboRepo · Husky · ESLint · Prettier |
+
+---
+
+## 🗂️ Repository Structure
+
+apps/
+api/ → Fastify + Prisma backend
+mobile/ → React Native (Expo) app
+workers/ → RSS ingestion workers
+packages/
+config/ → Shared TypeScript and ESLint configs
+
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js ≥ 20  
+- PNPM ≥ 9  
+- Docker + Docker Compose
+
+### Setup
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/<your-username>/cosmo.git
+cd cosmo
+
+# 2. Start database and cache
+docker compose up -d
+
+# 3. Install dependencies
+pnpm install
+
+# 4. Run API + Workers in dev mode
+pnpm dev
+
+# 5. Run mobile app
+cd apps/mobile
+pnpm start
+
+PORT=8080
+DATABASE_URL=postgresql://news:news@localhost:5432/news
+REDIS_URL=redis://localhost:6379
+NODE_ENV=development
+
+EXPO_PUBLIC_API=http://192.168.0.10:8080
+DEFAULT_COUNTRY=BR
+
+🧪 Quality & Testing
+Tool	Purpose
+ESLint + Prettier	Linting and formatting
+Vitest	Unit tests
+Supertest	API integration tests
+Husky + Lint-Staged	Pre-commit hooks
+TurboRepo	Monorepo orchestration
+
+📈 Roadmap
+Project setup & monorepo foundation
+API base (Fastify + Swagger + Prisma)
+Database + seed (categories, sources)
+RSS ingestion (BR + Global)
+/v1/feed & /v1/search endpoints
+Expo app: Home / Explore / Saved / Search tabs
+Offline mode and caching
+Notifications and trending topics
+AI-powered summaries (TL;DR)
+Text-to-speech reading mode
+
+🧭 Philosophy of Design
+
+Cosmo follows minimalism + clarity:
+
+Every pixel should serve purpose.
+
+Typography and color create focus, not noise.
+
+Navigation should feel intuitive and organic, not forced.
+
+Performance and accessibility are first-class citizens.
+
+💡 Future Enhancements
+
+🧠 AI summaries & topic clustering
+
+🗣️ Text-to-Speech (TTS) playback
+
+🕵️ Smart alerts by keyword
+
+📊 Personal reading insights
+
+🌐 Multilingual support (EN / PT / ES)
+
+🔒 Privacy-first analytics (anonymous usage metrics)
+
+🤝 Contributing
+
+Contributions are welcome!
+To contribute:
+
+Fork the repository
+
+Create a feature branch
+
+Commit with conventional commits
+
+Submit a PR with a clear description
+git checkout -b feat/new-feature
+git commit -m "feat: add category filter"
+git push origin feat/new-feature
+---
+
+🧾 License
+
+MIT License — feel free to use, modify, and share.
+
+---
+<p align="center"> <b>Cosmo — You connected to the world.</b><br> 🌌 Follow the flow of information. Understand the world, effortlessly. </p>
