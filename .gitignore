@@ -2,6 +2,12 @@
 .gradle/
 build/
 
+# Environment variables
+.env
+.env.local
+.env.*.local
+**/.env
+
 # Local configuration file (sdk path, etc)
 local.properties
 
@@ -32,3 +38,4 @@ google-services.json
 
 # Android Profiling
 *.hprof
+node_modules
