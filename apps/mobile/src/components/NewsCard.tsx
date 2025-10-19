@@ -1,35 +1,33 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
-type NewsCardProps = {
-  article: {
-    id: string;
-    title: string;
-    description?: string;
-    imageUrl?: string;
-    source?: { name: string };
-  };
-};
+interface NewsCardProps {
+  title: string;
+  image?: string;
+  source: string;
+  publishedAt: string;
+  onPress?: () => void;
+}
 
-export default function NewsCard({ article }: NewsCardProps) {
+export function NewsCard({ title, image, source, publishedAt, onPress }: NewsCardProps) {
   return (
-    <TouchableOpacity className="bg-white dark:bg-neutral-900 rounded-2xl shadow p-3 mb-3">
-      {article.imageUrl ? (
+    <TouchableOpacity
+      className="bg-white dark:bg-neutral-900 p-3 mb-3 rounded-2xl shadow-sm active:opacity-80"
+      onPress={onPress}
+    >
+      {image && (
         <Image
-          source={{ uri: article.imageUrl }}
-          className="h-48 w-full rounded-xl mb-3"
+          source={{ uri: image }}
+          className="w-full h-48 rounded-xl mb-3"
           resizeMode="cover"
         />
-      ) : null}
-
-      <Text className="text-lg font-semibold text-neutral-800 dark:text-white mb-1">
-        {article.title}
-      </Text>
-
-      {article.source?.name && (
-        <Text className="text-sm text-neutral-500">
-          {article.source.name}
-        </Text>
       )}
+      <Text className="text-lg font-semibold text-neutral-900 dark:text-neutral-100 mb-1">
+        {title}
+      </Text>
+      <View className="flex-row justify-between">
+        <Text className="text-sm text-neutral-500">{source}</Text>
+        <Text className="text-sm text-neutral-500">{publishedAt}</Text>
+      </View>
     </TouchableOpacity>
   );
 }
