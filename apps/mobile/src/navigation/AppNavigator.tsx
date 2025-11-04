@@ -6,6 +6,11 @@ import FavoritesScreen from "../screens/FavoritesScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { View, Text } from "react-native";
+import { enableScreens } from "react-native-screens";
+
+// TEMP: disable native screens optimizations due to Android string→boolean crash
+// Revisit after upgrading Expo/RN libs.
+enableScreens(false);
 
 const Tab = createBottomTabNavigator();
 
