@@ -10,5 +10,9 @@
     "outDir": "dist",
     "resolveJsonModule": true
   },
-  "include": ["src"]
+  "include": [
+    "src/index.ts",
+    "src/rssIngestor.ts",
+    "src/utils/**/*.ts"
+  ]
 }
