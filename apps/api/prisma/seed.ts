@@ -34,13 +34,6 @@ async function main() {
       baseUrl: "https://g1.globo.com/rss/g1/",
       type: "rss",
     },
-    {
-      name: "CNN Brasil",
-      country: "BR",
-      language: "pt",
-      baseUrl: "https://www.cnnbrasil.com.br/",
-      type: "rss",
-    },
   ];
 
   for (const source of sources) {

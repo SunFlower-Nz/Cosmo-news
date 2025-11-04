@@ -1,9 +1,10 @@
 import { createRequire } from "module";
-import { prisma } from "./lib/prisma.js";
+import { PrismaClient } from "@prisma/client";
 
 const _require = createRequire(import.meta.url);
 const RSSParser = _require("rss-parser");
 
+const prisma = new PrismaClient();
 const parser = new RSSParser();
 
 export async function ingestRSS() {

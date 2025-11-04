@@ -1,4 +1,3 @@
-import "./lib/env.js";
 import cron from "node-cron";
 import { ingestRSS } from "./rssIngestor.js";
 
