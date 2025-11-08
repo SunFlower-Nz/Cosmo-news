@@ -6,10 +6,12 @@ export const useFeed = () => {
     queryKey: ["feed"],
     queryFn: async () => {
       console.log("🔍 Chamando API...");
-      // Removendo query parameters ou ajustando para o formato correto
-      const { data } = await api.get("/v1/feed");
-      console.log("✅ Recebido:", data?.length || 0, "notícias");
-      return data;
+      const { data } = await api.get("/v1/feed", {
+        params: { page: 1, limit: 20 }
+      });
+      // Backend retorna { data: Article[], pagination: {...} }
+      console.log("✅ Recebido:", data?.data?.length || 0, "notícias");
+      return data?.data ?? [];
     },
     retry: 3,
     staleTime: 1000 * 60 * 5, // 5 minutos
